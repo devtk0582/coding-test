@@ -1,0 +1,29 @@
+﻿@model CodingTestProject.Models.Account
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Account</h2>
+
+<div class="row">
+    @Html.ValidationSummary()
+</div>
+
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Name: @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        </p>
+        <p>
+            Balance: @Html.TextBoxFor(model => model.Balance, new { @class = "form-control" })
+        </p>
+        <p>
+            <input role="button" class="btn btn-primary" type="submit" value="Create" />
+        </p>
+        <div>
+            @Html.ActionLink("Back", "Index", new { @class = "btn btn-primary" }) 
+        </div>
+    }
+</div>

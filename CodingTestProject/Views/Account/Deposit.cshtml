@@ -1,0 +1,35 @@
+﻿@model CodingTestProject.Models.AccountViewModel
+
+@{
+    ViewBag.Title = "Deposit";
+}
+
+<h2>Deposit Account</h2>
+
+<div class="row">
+    @Html.ValidationSummary()
+</div>
+
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Name: @Html.TextBoxFor(model => model.Account.Name, new { @class = "form-control", @readonly = true })
+            @Html.HiddenFor(model => model.Account.ID)
+        </p>
+        <p>
+            Current Balance: @Html.TextBoxFor(model => model.Account.Balance, new { @class = "form-control", @readonly = true, Value = string.Format("{0:f2}", Model.Account.Balance) })
+        </p>
+        <p>
+            Deposit Amount: @Html.TextBoxFor(model => model.Amount, new { @class = "form-control" })
+        </p>
+        <p>
+            <input role="button" class="btn btn-primary" type="submit" value="Deposit" />
+        </p>
+        <div>
+            @Html.ActionLink("Back", "Index", new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+
+

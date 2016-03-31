@@ -1,0 +1,21 @@
+﻿@model CodingTestProject.Models.Account
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Account</h2>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>Are you sure you want to delete the account @Model.Name with balance @Model.Balance.ToString("c")?</p>
+        <p>
+            <input role="button" class="btn btn-primary" type="submit" value="Delete" />
+        </p>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back", "Index", new { @class = "btn btn-primary" })
+</div>

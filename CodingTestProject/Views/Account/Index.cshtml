@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CodingTestProject.Models.Account>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="page-header">
+    <h1>Accounts</h1>
+    <p>@Html.ActionLink("Add Account", "Create", null, new { @class = "btn btn-primary" })</p>
+</div>
+
+<div class="row">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th class="col-lg-3">
+                    Name
+                </th>
+                <th class="col-lg-6">
+                    Balance
+                </th>
+                <th class="col-lg-1">
+                    Deposit
+                </th>
+                <th class="col-lg-1">
+                    Withdraw
+                </th>
+                <th class="col-lg-1">
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count() > 0)
+            {
+                foreach(var account in Model)
+                {
+                    <tr>
+                        <td class="col-lg-3">@Html.Encode(account.Name)</td>
+                        <td class="col-lg-6">@Html.Encode(account.Balance.ToString("c"))</td>
+                        <td class="col-lg-1">@Html.ActionLink("Deposit", "Deposit", "Account", new { id = account.ID }, new { @class= "btn btn-primary" } )</td>
+                        <td class="col-lg-1">@Html.ActionLink("Withdraw", "Withdraw", "Account", new { id = account.ID }, new { @class = "btn btn-primary" })</td>
+                        <td class="col-lg-1">@Html.ActionLink("Delete", "Delete", "Account", new { id = account.ID }, new { @class = "btn btn-primary" })</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>No Account</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
